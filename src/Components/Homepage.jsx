@@ -2,10 +2,16 @@ import React from "react";
 import millify from "millify";
 import { Typography, Row, Col, Statistic } from "antd";
 import { Link } from "react-router-dom";
+import { useGetExchangesQuery } from "../services/cryptoApi";
 
 const { Title } = Typography;
 
 const Homepage = () => {
+  const results = useGetExchangesQuery();
+
+  const globalStatus = results.data.data.stats;
+  console.log(globalStatus, results);
+
   return (
     <>
       <Title level={2} className="heading">
@@ -13,19 +19,34 @@ const Homepage = () => {
       </Title>
       <Row>
         <Col span={12}>
-          <Statistic title="Total Currencies" value={5} />
+          <Statistic
+            title="Total Currencies"
+            value={millify(globalStatus.total)}
+          />
         </Col>
         <Col span={12}>
-          <Statistic title="Total Exchanges" value={5} />
+          <Statistic
+            title="Total Exchanges"
+            value={millify(globalStatus.totalExchanges)}
+          />
         </Col>
         <Col span={12}>
-          <Statistic title="Total Market Cap" value={5} />
+          <Statistic
+            title="Total Market Cap"
+            value={millify(globalStatus.totalMarketCap)}
+          />
         </Col>
         <Col span={12}>
-          <Statistic title="Total 24h volume" value={5} />
+          <Statistic
+            title="Total 24h volume"
+            value={millify(globalStatus.total24hVolume)}
+          />
         </Col>
         <Col span={12}>
-          <Statistic title="Total Markets" value={5} />
+          <Statistic
+            title="Total Markets"
+            value={millify(globalStatus.totalMarkets)}
+          />
         </Col>
       </Row>
       <div className="home-heading-container">
