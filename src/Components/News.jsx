@@ -3,7 +3,7 @@ import { Select, Row, Col, Typography, Avatar, Card } from "antd";
 import moment from "moment";
 
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
-import { useGetExchangesQuery } from "../services/cryptoApi";
+import { useGetCryptosQuery } from "../services/cryptoApi";
 import demoImage from "../images/demo.jpg";
 
 const { Title, Text } = Typography;
@@ -11,7 +11,7 @@ const { Option } = Select;
 
 const News = ({ simplified }) => {
   const [newsCategory, setNewsCategory] = useState("Cryptocurrency");
-  const { data } = useGetExchangesQuery(100);
+  const { data } = useGetCryptosQuery(100);
   const { data: cryptoNews } = useGetCryptoNewsQuery({
     newsCategory,
     count: simplified ? 6 : 12,

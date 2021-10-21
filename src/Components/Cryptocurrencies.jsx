@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import millify from "millify";
 import { Row, Col, Card, Input } from "antd";
-import { useGetExchangesQuery } from "../services/cryptoApi";
+import { useGetCryptosQuery } from "../services/cryptoApi";
 import { Link } from "react-router-dom";
 
 const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 50;
-  const { data: cryptoList, isFetching } = useGetExchangesQuery(count);
+  const { data: cryptoList, isFetching } = useGetCryptosQuery(count);
   // eslint-disable-next-line no-unused-vars
   const [cryptos, setCryptos] = useState(cryptoList?.data?.coins);
   const [searchTerm, setSearchTerm] = useState("");
