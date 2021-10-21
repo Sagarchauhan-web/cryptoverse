@@ -1,24 +1,25 @@
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import { Layout, Typography, Space } from "antd";
+
 import {
-  Navbar,
-  Homepage,
   Exchanges,
+  Homepage,
+  News,
   Cryptocurrencies,
   CryptoDetails,
-  News,
-} from "./Components";
+  Navbar,
+} from "./components";
 import "./app.css";
 
-const App = () => {
-  return (
-    <div className="app">
-      <div className="navbar">
-        <Navbar />
-      </div>
-      <div className="main">
-        <Layout>
+const App = () => (
+  <div className="app">
+    <div className="navbar">
+      <Navbar />
+    </div>
+    <div className="main">
+      <Layout>
+        <div className="routes">
           <Switch>
             <Route exact path="/">
               <Homepage />
@@ -36,24 +37,25 @@ const App = () => {
               <News />
             </Route>
           </Switch>
-        </Layout>
-        <div className="footer">
-          <Typography.Title
-            level={5}
-            style={{ color: "white", textAlign: "center" }}
-          >
-            Cryptoverse <br />
-            All rights reserved
-          </Typography.Title>
-          <Space>
-            <Link to="/">Home</Link>
-            <Link to="/exchanges">Exchanges</Link>
-            <Link to="/news">News</Link>
-          </Space>
         </div>
+      </Layout>
+      <div className="footer">
+        <Typography.Title
+          level={5}
+          style={{ color: "white", textAlign: "center" }}
+        >
+          Copyright © 2021
+          <Link to="/">Cryptoverse Inc.</Link> <br />
+          All Rights Reserved.
+        </Typography.Title>
+        <Space>
+          <Link to="/">Home</Link>
+          <Link to="/exchanges">Exchanges</Link>
+          <Link to="/news">News</Link>
+        </Space>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default App;
