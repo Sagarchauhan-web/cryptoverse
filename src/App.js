@@ -9,7 +9,7 @@ import {
   Cryptocurrencies,
   CryptoDetails,
   Navbar,
-} from "./components";
+} from "./Components";
 import "./app.css";
 
 const App = () => (
